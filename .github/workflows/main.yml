@@ -16,4 +16,4 @@ jobs:
         uses: Ilshidur/action-discord@f237343
         with:
           args: Dependency security audit failed.
-            https://github.com/jensim/test_discord_action/actions/runs/$GITHUB_RUN_ID
+            https://github.com/jensim/test_discord_action/actions/runs/${{GITHUB_RUN_ID}}
