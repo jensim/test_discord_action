@@ -10,6 +10,13 @@ jobs:
     if: "!contains(github.event.head_commit.message, 'ci skip')"
     steps:
       - name: Discord notification
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+          DISCORD_USERNAME: GitHub dependency audit
+        uses: Ilshidur/action-discord@master
+        with:
+          args: 'Dependency security audit running.'
+      - name: Discord fail notification
         if: failure()
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
@@ -17,3 +24,4 @@ jobs:
         uses: Ilshidur/action-discord@master
         with:
           args: 'Dependency security audit failed.'
+
